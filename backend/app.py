@@ -1,13 +1,17 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from pymongo import MongoClient
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # Charge les variables d’environnement depuis .env
 
 app = Flask(__name__)
 CORS(app)  # Permet les requêtes cross-origin
 
-# Connexion MongoDB Atlas - remplace Admin:Admin par ton user et password
-client = MongoClient("mongodb+srv://buveusechall95:Admin@cluster0.fjbpo5e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-
+# Récupère la chaîne de connexion MongoDB depuis la variable d'environnement
+mongo_uri = os.getenv("MONGO_URI")
+client = MongoClient(mongo_uri)
 
 db = client.apocal_db
 collection = db.your_collection_name  # change ce nom par ta collection réelle
