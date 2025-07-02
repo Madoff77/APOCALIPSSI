@@ -65,3 +65,4 @@ En cas de problème, vérifiez :
 1. Que Python 3.8+ et Node.js sont installés
 2. Que votre clé API Groq est correcte
 3. Que les ports 5000 et 5173 sont libres
+# APOCALIPSSI
