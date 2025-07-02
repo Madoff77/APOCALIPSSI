@@ -4,7 +4,7 @@ import json
 from dotenv import load_dotenv
 
 # Charger les variables d'environnement depuis .env
-load_dotenv()
+load_dotenv(dotenv_path='../.env')
 
 # Initialiser le client Groq avec gestion d'erreur
 try:

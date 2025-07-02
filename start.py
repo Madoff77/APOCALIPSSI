@@ -20,7 +20,7 @@ def run_command(command, cwd=None, shell=True):
 
 def check_env():
     """Vérifier et créer le fichier .env si nécessaire"""
-    env_file = Path("backend/.env")
+    env_file = Path(".env")
     if not env_file.exists():
         print("Création du fichier .env...")
         env_content = """# Configuration de l'API Groq

@@ -13,7 +13,7 @@ def test_groq_connection():
     print("=" * 50)
     
     # Charger les variables d'environnement
-    load_dotenv()
+    load_dotenv(dotenv_path='../.env')
     
     # Vérifier si la clé API est présente
     api_key = os.getenv("GROQ_API_KEY")

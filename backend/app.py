@@ -12,7 +12,7 @@ from pdf_utils import extract_text_from_pdf
 from llm_summary import summarize_text
 from auth import create_user, authenticate_user, generate_token, token_required
 
-load_dotenv()
+load_dotenv(dotenv_path='../.env')
 
 app = Flask(__name__)
 CORS(app)

@@ -9,7 +9,7 @@ from bson import ObjectId
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(dotenv_path='../.env')
 
 def test_database():
     """Test de l'enregistrement et de la lecture en base"""

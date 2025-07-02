@@ -7,7 +7,7 @@ from flask import request, jsonify, current_app
 from bson import ObjectId
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(dotenv_path='../.env')
 
 # Configuration JWT
 JWT_SECRET = os.getenv("JWT_SECRET", "your-secret-key-change-this")
