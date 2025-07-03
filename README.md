@@ -8,6 +8,17 @@ Application web pour analyser des documents PDF avec l'intelligence artificielle
 - Python 3.8+ (télécharger depuis (https://python.org))
 - Node.js** (télécharger depuis (https://nodejs.org))
 
+### Structure du .env à la racine 
+
+MONGO_URI=mongodb://localhost:27017
+JWT_SECRET=votre-secret-jwt-super-securise
+GROQ_API_KEY=YOUR_API_KEY
+FLASK_ENV=development
+FLASK_DEBUG=True
+OLLAMA_BASE_URL=http://localhost:11434
+OLLAMA_MODEL=llama3.2:3b
+USE_LOCAL_MODEL=true
+
 ### Installation et lancement
 
 1. Cloner le projet
@@ -16,7 +27,7 @@ Application web pour analyser des documents PDF avec l'intelligence artificielle
    cd APOCALIPSSI
 
 2. Configurer l'API
-   - Ouvrir le fichier `backend/.env`
+   - Ouvrir le fichier `.env` ( Le créer si nécessaire à la racine )
    - Remplacer `your_groq_api_key_here` par votre clé API Groq
    - Obtenir une clé gratuite sur (https://console.groq.com)
 
@@ -56,7 +67,7 @@ APOCALIPSSI/
 - Cochez "Add Python to PATH" lors de l'installation
 
 ### Erreur API Groq
-- Vérifiez votre clé API dans `backend/.env`
+- Vérifiez votre clé API dans `.env`
 - Assurez-vous d'avoir des crédits sur votre compte Groq
 
 ## Support
