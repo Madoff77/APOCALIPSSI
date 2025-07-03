@@ -10,6 +10,7 @@ import json
 # Import des modules locaux
 from pdf_utils import extract_text_from_pdf
 from llm_summary import summarize_text
+from pii_anonymizer import anonymize_document_text
 from auth import create_user, authenticate_user, generate_token, token_required
 
 load_dotenv(dotenv_path='../.env')
@@ -210,9 +211,19 @@ def upload_and_analyze():
         except Exception as e:
             return jsonify({"error": f"Erreur lors de l'extraction du texte: {str(e)}"}), 400
 
-        # Analyser avec l'IA
+        # Anonymiser le texte avant l'analyse (conformité RGPD)
         try:
-            analysis_result = summarize_text(text)
+            anonymized_text, anonymization_stats = anonymize_document_text(text, strict_mode=True)
+            print(f"Anonymisation PII: {anonymization_stats['total_pii_detected']} éléments détectés")
+        except Exception as e:
+            print(f"Erreur lors de l'anonymisation: {e}")
+            # En cas d'erreur d'anonymisation, utiliser le texte original
+            anonymized_text = text
+            anonymization_stats = {'total_pii_detected': 0, 'types_detected': []}
+        
+        # Analyser le texte anonymisé avec l'IA
+        try:
+            analysis_result = summarize_text(anonymized_text)
         except Exception as e:
             return jsonify({"error": f"Erreur lors de l'analyse IA: {str(e)}"}), 500
 
